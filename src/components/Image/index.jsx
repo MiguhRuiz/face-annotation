@@ -11,6 +11,7 @@ class Image extends React.Component {
 
         this.addPoint = this.addPoint.bind(this)
         this.deleteLastPoint = this.deleteLastPoint.bind(this)
+        this.keyFunctions = this.keyFunctions.bind(this)
     }
     addPoint(ev) {
         const currentPositions = this.state.points
@@ -23,6 +24,23 @@ class Image extends React.Component {
         const points = this.state.points
         points.pop()
         this.setState({ points })
+    }
+
+    keyFunctions(ev) {
+        if(ev.keyCode === 83) {
+
+            const currentPositions = this.state.points
+            const postions = '-1,-1'
+            currentPositions.push(postions)
+            this.setState({ points: currentPositions })
+            
+        } else if(ev.keyCode === 8) {
+            this.deleteLastPoint()
+        }
+    }
+
+    componentDidMount() {
+        window.addEventListener('keydown', this.keyFunctions)
     }
 
     render() {
