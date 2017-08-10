@@ -28,7 +28,6 @@ class Point extends React.Component {
     }
     componentDidMount() {
         const el = this.refs.point
-        console.log(el)
         el.style.position = 'absolute'
         el.style.left = this.props.X + 'px'
         el.style.top = this.props.Y + 'px'

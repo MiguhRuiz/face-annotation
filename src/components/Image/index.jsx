@@ -10,6 +10,7 @@ class Image extends React.Component {
         }
 
         this.addPoint = this.addPoint.bind(this)
+        this.deleteLastPoint = this.deleteLastPoint.bind(this)
     }
     addPoint(ev) {
         const currentPositions = this.state.points
@@ -17,6 +18,13 @@ class Image extends React.Component {
         currentPositions.push(postions)
         this.setState({ points: currentPositions })
     }
+
+    deleteLastPoint() {
+        const points = this.state.points
+        points.pop()
+        this.setState({ points })
+    }
+
     render() {
         const renderPoints = (this.state.points.length > 0) ? this.state.points.map((point, index) => {
                                                                     const coords = point.split(',')
@@ -27,6 +35,7 @@ class Image extends React.Component {
             <div className="Image">
                 <img src="http://lorempixel.com/500/500/people/" onClick={this.addPoint}/>
                 {renderPoints}
+                <button onClick={this.deleteLastPoint}>Previous</button>
             </div>
         )
     }
