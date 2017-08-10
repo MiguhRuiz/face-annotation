@@ -37,6 +37,8 @@ class Image extends React.Component {
             
         } else if(ev.keyCode === 8) {
             this.deleteLastPoint()
+        } else if(ev.keyCode === 13) {
+            this.nextPhoto()
         }
     }
 
