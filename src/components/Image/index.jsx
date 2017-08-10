@@ -12,6 +12,7 @@ class Image extends React.Component {
         this.addPoint = this.addPoint.bind(this)
         this.deleteLastPoint = this.deleteLastPoint.bind(this)
         this.keyFunctions = this.keyFunctions.bind(this)
+        this.nextPhoto = this.nextPhoto.bind(this)
     }
     addPoint(ev) {
         const currentPositions = this.state.points
@@ -39,6 +40,15 @@ class Image extends React.Component {
         }
     }
 
+    nextPhoto() {
+        const points = this.state.points
+        const id = new Date().getTime()
+        const oldPoints = JSON.stringify(points)
+        sessionStorage.setItem(id, oldPoints)
+        this.setState({ points: [] })
+        document.querySelector('.Image img').src = 'http://lorempixel.com/500/500/people/'
+    }
+
     componentDidMount() {
         window.addEventListener('keydown', this.keyFunctions)
     }
@@ -54,6 +64,7 @@ class Image extends React.Component {
                 <img src="http://lorempixel.com/500/500/people/" onClick={this.addPoint}/>
                 {renderPoints}
                 <button onClick={this.deleteLastPoint}>Previous</button>
+                <button onClick={this.nextPhoto}>Next</button>
             </div>
         )
     }
