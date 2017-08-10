@@ -1,9 +1,11 @@
 import React from 'react'
 
+import Image from '../Image/index.jsx'
+
 class FaceInterface extends React.Component {
     render() {
         return(
-            <h1>Hello from FaceInterface</h1>
+            <Image />
         )
     }
 }
